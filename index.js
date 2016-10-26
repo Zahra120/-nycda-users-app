@@ -18,6 +18,13 @@ app.get('/', function(req,res){
 
 });
 
+//route 2: renders a page that displays a form which is your search bar.
+
+app.get('/search', function(req,res){
+   res.send(pug.renderFile('views/search.pug'));
+});
+
+
 app.listen(3000,function(){
 
   console.log('Web server is now running on port 3000');
