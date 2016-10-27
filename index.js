@@ -7,20 +7,18 @@ var app =  express();
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 var users = JSON.parse(fs.readFileSync('users.json'));
-var findUser = function(firstname){
-   for (var i=0; i < users.length; i++){
-      if(users[i].firstname === firstname)
+var findUser = function(query){
+   for (var i=0; i < users.length; i++) {
+      if (users[i].firstname.toLowerCase().match(query.toLowerCase())) {
          return users[i];
+      }
    }
 };
+
 // //Create one route: route 1: renders a page that displays all your users.
 app.get('/', function(req,res){
-
    res.send(pug.renderFile('views/index.pug', { users: users }));
-
-
 });
 
 //route 2: renders a page that displays a form which is your search bar.
@@ -37,7 +35,7 @@ app.get('/search/*', function(req, res){
 });
 app.post('/searchform', function(req, res){
    console.log('post request on search page');
-   res.redirect('/search/' + req.body.first_name);
+   res.redirect('/search/' + req.body.query);
 });
 
 
