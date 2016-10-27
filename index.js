@@ -12,6 +12,9 @@ var findUser = function(query){
    for (var i=0; i < users.length; i++) {
       if (users[i].firstname.toLowerCase().match(query.toLowerCase())) {
          return users[i];
+      } else if(users[i].lastname.toLowerCase().match(query.toLowerCase()))  {
+
+         return users[i];
       }
    }
 };
