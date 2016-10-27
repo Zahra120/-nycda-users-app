@@ -1,22 +1,7 @@
 [
-  {
-    "firstname": "Alexandre",
-    "lastname": "Marjan",
-    "email": "a.marjan@gmail.com"
-  },
-  {
-    "firstname": "Ulysses",
-    "lastname": "Silvio",
-    "email": "silverspoon87@gmail.com"
-  },
-  {
-    "firstname": "Viktor",
-    "lastname": "Gul",
-    "email": "viktor.rose@gmail.com"
-  },
-  {
-    "firstname": "Kamalani",
-    "lastname": "Georgy",
-    "email": "georgy.porgy@gmail.com"
-  }
+   {"firstname":"Alexandre","lastname":"Marjan","email":"a.marjan@gmail.com"},
+   {"firstname":"Ulysses","lastname":"Silvio","email":"silverspoon87@gmail.com"},
+   {"firstname":"Viktor","lastname":"Gul","email":"viktor.rose@gmail.com"},
+   {"firstname":"Kamalani","lastname":"Georgy","email":"georgy.porgy@gmail.com"},
+   {"firstname":"g","lastname":"hk","email":"ghanbarifam@gmail.com"}
 ]
