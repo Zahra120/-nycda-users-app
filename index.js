@@ -66,7 +66,7 @@
 
    app.post('/adduser', function(req, res){
 
-         users.push({
+         usersData.push({
          firstname: req.body.firstname,
          lastname: req.body.lastname,
          email: req.body.email
@@ -74,7 +74,7 @@
    //route 5: takes in the post request from the 'create user' form, then adds the
    //user to the users.json file. Once that is complete, redirects to the route that displays all your users (from part 0)
 
-      fs.writeFileSync('users.json', JSON.stringify(users));
+      fs.writeFileSync('users.json', JSON.stringify(usersData));
       res.redirect('/');
    });
 
