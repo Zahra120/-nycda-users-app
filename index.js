@@ -8,7 +8,7 @@
    app.use(morgan('dev'));
    app.use(bodyParser.urlencoded({ extended: false }));
 
-   var users = JSON.parse(fs.readFileSync('users.json'));
+   var usersData = JSON.parse(fs.readFileSync('users.json'));
    // var findUser = function(query){
    //    var result = [];
    //    for (var i=0; i < users.length; i++){
@@ -21,12 +21,11 @@
    // };
       function findUser(input){
          var result = [];
-         for(var i = 0; i < users.length; i++){
-            if ( searchFirstName(input, users[i]) || searchLastName(input, users[i])){
-                result.push(users[i]);
+         for(var i = 0; i < usersData.length; i++){
+            if ( searchFirstName(input, usersData[i]) || searchLastName(input, usersData[i])){
+                result.push(usersData[i]);
 
             }
-
          }
          return result;
       }
@@ -40,7 +39,7 @@
 
    //Create one route: route 1: renders a page that displays all your users.
    app.get('/', function(req,res){
-      res.send(pug.renderFile('views/index.pug', { users: users }));
+      res.send(pug.renderFile('views/index.pug', { users: usersData }));
    });
 
    //route 2: renders a page that displays a form which is your search bar.
@@ -52,8 +51,8 @@
    //route 3: takes in the post request from your form, then displays matching users
    //on a new page. Users should be matched based on whether either their first or last name contains the input string.
    app.get('/search/*', function(req, res){
-      var result = findUser(req.params[0]);
-      res.send(pug.renderFile('views/user.pug', { result: result }));
+      var multiResult = findUser(req.params[0]);
+      res.send(pug.renderFile('views/user.pug', { result: multiResult }));
    });
    app.post('/searchform', function(req, res){
       res.redirect('/search/' + req.body.query);
