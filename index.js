@@ -3,7 +3,9 @@
       pug = require('pug'),
       morgan = require('morgan'),
       bodyParser = require('body-parser'),
-      app =  express();
+      app = express();
+
+   app.use(express.static('public'));
 
    app.use(morgan('dev'));
    app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,21 +41,27 @@
 
    //Create one route: route 1: renders a page that displays all your users.
    app.get('/', function(req,res){
-      res.send(pug.renderFile('views/index.pug', { users: usersData }));
+      res.send(pug.renderFile('views/users/index.pug', { users: usersData }));
    });
 
    //route 2: renders a page that displays a form which is your search bar.
 
    app.get('/search', function(req, res){
-      res.send(pug.renderFile('views/search.pug'));
+      res.send(pug.renderFile('views/search/search.pug'));
    });
 
    //route 3: takes in the post request from your form, then displays matching users
    //on a new page. Users should be matched based on whether either their first or last name contains the input string.
    app.get('/search/*', function(req, res){
       var multiResult = findUser(req.params[0]);
-      res.send(pug.renderFile('views/user.pug', { result: multiResult }));
+      res.send(pug.renderFile('views/users/user.pug', { result: multiResult }));
    });
+
+   app.get('/api/search/:query', function(req, res)  {
+      var result = findUser(req.params.query);
+      res.json(result);
+   });
+
    app.post('/searchform', function(req, res){
       res.redirect('/search/' + req.body.query);
    });
@@ -61,7 +69,7 @@
    //route 4: renders a page with three forms on it (first name, last name, and email)
    //that allows you to add new users to the users.json file.
    app.get('/adduser', function(req, res){
-      res.send(pug.renderFile('views/adduser.pug'));
+      res.send(pug.renderFile('views/users/adduser.pug'));
    });
 
    app.post('/adduser', function(req, res){
@@ -76,6 +84,11 @@
 
       fs.writeFileSync('users.json', JSON.stringify(usersData));
       res.redirect('/');
+   });
+   app.post('/search', function(req, res){
+      res.redirect('/search/'+ req.body.query);
+      // res.redirect('/search/'+ req.body.query) ;
+
    });
 
 

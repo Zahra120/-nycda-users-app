@@ -1,0 +1,10 @@
+extends ../application.pug
+
+block content
+   .container
+      each user in result
+         .container
+            .row
+               .col-xs-6.offset-xs-3
+                  h3= user.firstname
+                  p= user.lastname

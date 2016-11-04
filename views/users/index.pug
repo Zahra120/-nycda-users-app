@@ -1,0 +1,12 @@
+extends  ../application.pug
+
+block content
+   h1 List of users:
+   each user in users
+      .container
+         .row
+            .col-xs-6.offset-xs-3
+
+               h3= user.firstname
+               h4= user.lastname
+               p= user.email
