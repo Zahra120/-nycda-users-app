@@ -1,9 +1,9 @@
 extends ../application.pug
 
 block content
-   .container
-      form(class="navbar-form navbar-left" role="search" action="/searchform" method="POST")
-         .form-group
-            input(type="text" class="form-control" placeholder="Search" name="query")
+	.container
+		form(class="navbar-form navbar-left" role="search" action="/search" method="POST")
+			.form-group
+				input(type="text" class="form-control" placeholder="Search" name="query")
 
-         button(type="submit" class="btn btn-default") Submit
+			button(type="submit" class="btn btn-default") Submit

@@ -1,15 +1,11 @@
 
-$('#searchNav').on('keyup', function(event) {
-
-   var $input = $(event.currentTarget);
-   var query = $input.val();
-
-
+$('#searchNav').on('keyup', function() {
+   var query = $(this).val();
 
    $.get('/api/search/' + query, function(body){
 
       body.forEach(function(element) {
-       $('.in-application-search-results').append(
+       $('.search-results').append(
          '<li>' + element.firstname + ' ' +
           element.lastname + '</li>'
        );

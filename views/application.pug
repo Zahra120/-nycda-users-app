@@ -1,6 +1,7 @@
 html
 	head
-		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
 	body
 		nav.navbar.navbar-default
 			.container-fluid
@@ -11,13 +12,13 @@ html
 						.form-group
 							input(type="text" id="searchNav" class="form-control" placeholder="Search" name="query" )
 						button(type="submit" class="btn btn-default") Submit
-						ul.in-application-search-results
+						ul.search-results
 
 					ul.nav.navbar-nav.navbar-right
 						li
-							a(href="/users/adduser.pug") New user
+							a(href="/users") New user
 						li
-							a(href="/search/search.pug") Search
+							a(href="/search") Search
 		block content
 
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
